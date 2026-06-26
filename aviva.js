@@ -10,7 +10,7 @@ const calendarPhotos = Array.from(
 // These dates control the countdown calendar.
 const calendarStartDate = "2026-06-26";
 const calendarEndDate = "2026-07-15";
-const americaArrivalTime = new Date("2026-08-04T05:55:00+03:00");
+const americaArrivalTime = new Date("2026-07-15T06:00:00-05:00");
 
 // localStorage keys.
 // These remember which days were opened.
