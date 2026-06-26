@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Password</title>
+    <link rel="stylesheet" href="aviva.css">
+</head>
+<body>
+    <h1>Countdown Calendar</h1>
+
+    <div id="passwordScreen">
+        <form id="passwordBox">
+            <h2>Enter Password</h2>
+            <input id="passwordInput" type="password" autocomplete="current-password" placeholder="Password">
+            <button id="passwordButton" type="submit">Unlock Calendar</button>
+            <p id="passwordMessage"></p>
+        </form>
+    </div>
+
+    <script>
+        const calendarPasswordKey = "countdownCalendarUnlocked";
+        const calendarPassword = "mick";
+        const passwordBox = document.getElementById("passwordBox");
+        const passwordInput = document.getElementById("passwordInput");
+        const passwordMessage = document.getElementById("passwordMessage");
+
+        if (localStorage.getItem(calendarPasswordKey) === "true") {
+            window.location.href = "countdown_calendar.html";
+        }
+
+        passwordInput.focus();
+
+        passwordBox.onsubmit = function(event) {
+            event.preventDefault();
+
+            if (passwordInput.value.trim().toLowerCase() === calendarPassword) {
+                localStorage.setItem(calendarPasswordKey, "true");
+                window.location.href = "countdown_calendar.html";
+                return;
+            }
+
+            passwordMessage.textContent = "Try again";
+            passwordInput.value = "";
+            passwordInput.focus();
+        };
+    </script>
+</body>
+</html>

@@ -18,47 +18,16 @@ const revealedCalendarDaysKey = "revealedCountdownDays";
 const testRevealedCalendarDaysKey = "testRevealedCountdownDays";
 const showCalendarHoursKey = "showCountdownHours";
 const calendarPasswordKey = "countdownCalendarUnlocked";
-const calendarPassword = "mick";
+
+if (localStorage.getItem(calendarPasswordKey) !== "true") {
+    window.location.href = "index.html";
+}
 
 // Get the calendar elements from the HTML.
-const passwordScreen = document.getElementById("passwordScreen");
-const passwordBox = document.getElementById("passwordBox");
-const passwordInput = document.getElementById("passwordInput");
-const passwordMessage = document.getElementById("passwordMessage");
 const calendarScreen = document.getElementById("calendarScreen");
 const calendarMessageEl = document.getElementById("calendarMessage");
 const showCalendarHoursToggle = document.getElementById("showCalendarHoursToggle");
 const calendarGridEl = document.getElementById("calendarGrid");
-
-function showCalendarScreen() {
-    passwordScreen.classList.add("hidden");
-    calendarScreen.classList.remove("hidden");
-    setupCalendarHoursSetting();
-    buildCalendar();
-}
-
-function setupPasswordScreen() {
-    if (localStorage.getItem(calendarPasswordKey) === "true") {
-        showCalendarScreen();
-        return;
-    }
-
-    passwordInput.focus();
-
-    passwordBox.onsubmit = function(event) {
-        event.preventDefault();
-
-        if (passwordInput.value.trim().toLowerCase() === calendarPassword) {
-            localStorage.setItem(calendarPasswordKey, "true");
-            showCalendarScreen();
-            return;
-        }
-
-        passwordMessage.textContent = "Try again";
-        passwordInput.value = "";
-        passwordInput.focus();
-    };
-}
 
 // This function turns a date into YYYY-MM-DD using the browser's local date.
 function formatCalendarDate(date) {
@@ -262,8 +231,9 @@ function setupCalendarHoursSetting() {
     };
 }
 
-// Start the calendar after the password is entered.
-setupPasswordScreen();
+// Start the calendar.
+setupCalendarHoursSetting();
+buildCalendar();
 
 // Rebuild every minute so today's hours stay updated.
 setInterval(function() {
