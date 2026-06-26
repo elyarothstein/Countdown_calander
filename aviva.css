@@ -1,0 +1,229 @@
+/* Basic page style */
+h1,
+h2 {
+    display: inline-block;
+    background: rgba(216,180,254,0.86);
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 12px 24px;
+}
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    color: #1f102b;
+    background: #5b168f;
+    border: 2px solid #000;
+    border-radius: 8px;
+}
+
+.hidden {
+    display: none;
+}
+
+#passwordScreen {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+#passwordBox {
+    width: min(380px, 90vw);
+    padding: 24px;
+    background: rgba(216,180,254,0.92);
+    border: 2px solid #000;
+    border-radius: 8px;
+}
+
+#passwordInput {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding: 12px;
+    color: #1f102b;
+    background: #f6ecff;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+#passwordButton {
+    width: 100%;
+    padding: 12px;
+    color: #f6ecff;
+    background: #5b168f;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#passwordMessage {
+    min-height: 20px;
+    margin: 10px 0 0;
+    font-weight: bold;
+}
+
+/* Main calendar screen */
+#calendarScreen {
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f6ecff;
+    background-image: url("aviva_images/collage_background.jpg?v=2");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Calendar box */
+#calendarBox {
+    width: min(900px, 96vw);
+    margin: 10px auto;
+}
+
+/* Message at the top */
+#calendarMessage {
+    max-width: 650px;
+    line-height: 1.4;
+    margin: 10px auto;
+    background: rgba(216,180,254,0.86);
+    border: 2px solid #000;
+    border-radius: 8px;
+}
+
+/* Hours checkbox */
+#calendarHoursSetting {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 4px auto 8px;
+    padding: 8px 12px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    background: rgba(232,213,255,0.9);
+    font-weight: bold;
+}
+
+#showCalendarHoursToggle {
+    width: 18px;
+    height: 18px;
+    accent-color: #6d28d9;
+}
+
+/* Calendar grid */
+#calendarGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(88px, 1fr));
+    gap: 10px;
+    margin: 18px auto;
+}
+
+/* Every day square */
+.calendarDay {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    min-height: 92px;
+    padding: 8px;
+    overflow: hidden;
+    cursor: not-allowed;
+    background: rgba(216,180,254,0.86);
+    color: #241132;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* A day that can be opened */
+.calendarDay.today {
+    cursor: pointer;
+    background: rgba(192,132,252,0.92);
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.75);
+}
+
+/* Locked future days */
+.calendarDay.locked {
+    opacity: 0.82;
+}
+
+/* Revealed days with photo background */
+.calendarDay.revealed {
+    cursor: default;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}
+
+/* Purple overlay on revealed photo */
+.calendarDay.revealed::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(109,40,217,0.14);
+}
+
+/* Text inside calendar squares */
+.calendarDate,
+.calendarWord,
+.calendarLock {
+    position: relative;
+    z-index: 1;
+}
+
+.calendarDate {
+    display: block;
+    font-size: 14px;
+}
+
+.calendarWord {
+    display: grid;
+    place-items: center;
+    height: calc(100% - 18px);
+    padding: 2px;
+    box-sizing: border-box;
+    font-size: clamp(12px, 1.6vw, 18px);
+    line-height: 1.15;
+    text-shadow: 0 1px 4px rgba(255,255,255,0.95);
+}
+
+.calendarLock {
+    display: block;
+    margin-top: 18px;
+    font-size: 13px;
+}
+
+/* Phone layout */
+@media (max-width: 600px) {
+    body {
+        margin: 0;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    #calendarScreen {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        padding: 15px;
+    }
+
+    #calendarGrid {
+        grid-template-columns: repeat(3, minmax(82px, 1fr));
+        gap: 8px;
+    }
+
+    .calendarDay {
+        min-height: 82px;
+        padding: 6px;
+    }
+}

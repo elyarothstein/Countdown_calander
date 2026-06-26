@@ -1,0 +1,14 @@
+# Mac files
+.DS_Store
+
+# PyCharm / JetBrains settings
+.idea/
+
+# Temporary files
+*.tmp
+*.log
+
+# Backups
+aviva_images_backup_*/
+aviva_images/
+google_aviva/

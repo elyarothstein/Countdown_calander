@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Calendar</title>
+    <link rel="stylesheet" href="aviva.css">
+</head>
+<body>
+    <h1>Countdown Calendar</h1>
+
+    <div id="passwordScreen">
+        <form id="passwordBox">
+            <h2>Enter Password</h2>
+            <input id="passwordInput" type="password" autocomplete="current-password" placeholder="Password">
+            <button id="passwordButton" type="submit">Unlock Calendar</button>
+            <p id="passwordMessage"></p>
+        </form>
+    </div>
+
+    <div id="calendarScreen" class="hidden">
+        <div id="calendarBox">
+            <h2>Countdown to Home</h2>
+
+            <p id="calendarMessage"></p>
+
+            <label id="calendarHoursSetting">
+                <input id="showCalendarHoursToggle" type="checkbox" checked>
+                Show hours on today's square
+            </label>
+
+            <div id="calendarGrid"></div>
+        </div>
+    </div>
+
+    <script src="aviva.js"></script>
+</body>
+</html>
